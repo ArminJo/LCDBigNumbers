@@ -1,0 +1,32 @@
+#######################################
+# Syntax Coloring Map for LCDBigNumbers
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+LCDBigNumbers	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+setBigNumberCursor	KEYWORD2
+write	KEYWORD2
+writeAt	KEYWORD2
+writeBigNumber	KEYWORD2
+# static functions
+testBigNumbers	KEYWORD2
+printSpaces	KEYWORD2
+clearLine	KEYWORD2
+showSpecialCharacters	KEYWORD2
+showCustomCharacters	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+USE_PARALLEL_2004_LCD	LITERAL1
+USE_PARALLEL_1602_LCD	LITERAL1
+USE_SERIAL_2004_LCD	LITERAL1
+USE_SERIAL_1602_LCD	LITERAL1
+
