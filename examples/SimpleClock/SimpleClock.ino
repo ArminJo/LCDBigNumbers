@@ -58,6 +58,12 @@ void setup() {
     myLCD.backlight();
 #endif
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
+    myLCD.setCursor(0, 0);
+    myLCD.print(F("Clock demo"));
+    myLCD.setCursor(0, 1);
+    myLCD.print(__DATE__);
+    delay(2000);
+    myLCD.clear();
 }
 
 int Minutes = 48;

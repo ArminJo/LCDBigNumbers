@@ -21,15 +21,24 @@ Arduino library to write big numbers on a 1602 or 2004 LCD.
 <br/>
 
 # Features
-- **7 different fonts available**.
-- Support for big characters **"-"**, **"."** and **":"**.
-- Support for parallel and serial LCD libraries.
+- **10 different fonts available. From 1x2 up to 3x4.**.
+- Support for special big characters `-`, `.` and `:`.
+- Support for **parallel and serial** LCD connections.
+- For all architectures.
 
 # Usage
 
 ```c++
+// Choose your display
+//#define USE_PARALLEL_2004_LCD // Is default
+//#define USE_PARALLEL_1602_LCD
+//#define USE_SERIAL_2004_LCD
+//#define USE_SERIAL_1602_LCD
+#include "LCDBigNumbers.hpp" // Include sources for LCD big number generation
+
 LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
 LCDBigNumbers bigNumberLCD(&myLCD, 3, 4, 1); // Use 3x4 numbers, 1. variant
+
 void setup() {
     myLCD.begin(LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS and LCD_ROWS are set by LCDBigNumbers.hpp depending on the defined display
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
@@ -56,9 +65,12 @@ void clearLine(LiquidCrystal *aLCD, uint_fast8_t aLineNumber);
 void printSpaces(LiquidCrystal *aLCD, uint_fast8_t aNumberOfSpacesToPrint);
 void testBigNumbers(LiquidCrystal *aLCD);
 ```
+# Wokwi
+- [Wokwi](https://wokwi.com/projects/346534078384702034) life BigNumbersDemo example.
+- [Wokwi](https://wokwi.com/projects/346661429974139474) life SimpleClock example.
 
 # Screenshots
-[Wokwi](https://wokwi.com/projects/346534078384702034) screenshots of [AllLCDBigNumbersOn2004 example](https://github.com/ArminJo/LCDBigNumbers/tree/master/examples/AllLCDBigNumbersOn2004)
+[Wokwi](https://wokwi.com/projects/346534078384702034) screenshots of [BigNumbersDemo example](https://github.com/ArminJo/LCDBigNumbers/tree/master/examples/BigNumbersDemo)
 
 | Size | Variant |  |  |  |
 |-|-|-|-|-|

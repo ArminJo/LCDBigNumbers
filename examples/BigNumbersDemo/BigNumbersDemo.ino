@@ -34,8 +34,7 @@
 
 #if defined(USE_PARALLEL_LCD)
 #include <LiquidCrystal.h>
-//LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
-LiquidCrystal myLCD(7, 8, 3, 4, 5, 6 ); // Sample connections starting at pin 3
+LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
 //LiquidCrystal myLCD(4, 5, 6, 7, 8, 9); // Sample connections starting at pin 4
 #else
 #define LCD_I2C_ADDRESS 0x27    // Default LCD address is 0x27 for a 20 chars and 4 line / 2004 display
