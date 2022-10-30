@@ -39,6 +39,17 @@
 #include "LiquidCrystal_I2C.h"  // Use an up to date library version which has the init method
 #endif
 
+#define BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1  0x01
+#define BIG_NUMBERS_FONT_2_COLUMN_2_ROWS_VARIANT_1  0x05
+#define BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_1  0x09
+#define BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_2  0x19
+#define BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_3  0x29
+#define BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1  0x06
+#define BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2  0x16
+#define BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1  0x0A
+#define BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1  0x0B
+#define BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_2  0x1B
+
 class LCDBigNumbers : public Print{
 
 public:
@@ -56,17 +67,17 @@ public:
     uint8_t upperLeftRowIndex;
 
 #if defined(USE_PARALLEL_LCD)
-    LCDBigNumbers(LiquidCrystal *aLCD, const uint8_t aNumberWidth, const uint8_t aNumberHeight, const uint8_t aFontVariant);
+    LCDBigNumbers(LiquidCrystal *aLCD, const uint8_t aBigNumberFontIdentifier);
 #else
-    LCDBigNumbers(LiquidCrystal_I2C *aLCD, const uint8_t aNumberWidth, const uint8_t aNumberHeight, const uint8_t aFontVariant);
+    LCDBigNumbers(LiquidCrystal_I2C *aLCD, const uint8_t aBigNumberFontIdentifier);
 #endif
 
     //createChar with PROGMEM input
     void _createChar(uint8_t location, const uint8_t *charmap);
 
-    void init(const uint8_t aFontVariant); // Internal function to select the appropriate font arrays
+    void init(const uint8_t aBigNumberFontIdentifier); // Internal function to select the appropriate font arrays
     void write();
-    void writeAt(uint8_t aNumber, uint8_t aLeftStartColumnIndex, uint8_t aStartRowIndex = 0);
+    void writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
     void setBigNumberCursor(uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
 
     void begin(); // Creates custom character used for generating big numbers

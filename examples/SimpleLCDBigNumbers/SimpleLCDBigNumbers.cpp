@@ -42,8 +42,13 @@ LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
 LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS and LCD_ROWS are set by LCDBigNumbers.hpp depending on the defined display
 #endif
 
-//LCDBigNumbers bigNumberLCD(&myLCD, 3, 3, 1); // Use 3x3 numbers, 1. variant
-LCDBigNumbers bigNumberLCD(&myLCD, 3, 4, 1); // Use 3x4 numbers, 1. variant
+/*
+ * Available big number fonts are: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS_VARIANT_1,
+ * BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_3,
+ * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1,
+ * BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_2
+ */
+LCDBigNumbers bigNumberLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1); // Use 3x4 numbers, 1. variant
 
 void setup() {
     Serial.begin(115200);
@@ -61,7 +66,7 @@ void setup() {
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
     bigNumberLCD.setBigNumberCursor(0);
     bigNumberLCD.print(F("-- 47.11"));
-    bigNumberLCD.writeAt(':',19); // Keep in mind that numbers always have a trailing but no leading gap.
+    bigNumberLCD.writeAt(':',19); // Keep in mind that this numbers always have a trailing but no leading gap.
 }
 
 void loop() {

@@ -5,7 +5,7 @@ Arduino library to write big numbers on a 1602 or 2004 LCD.
 
 [![Badge License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
  &nbsp; &nbsp; 
-[![Badge Version](https://img.shields.io/github/v/release/ArminJo/LCDBigNumbers?include_prereleases&color=yellow&logo=DocuSign&logoColor=white)](https://github.com/ServoEasing/LCDBigNumbers/releases/latest)
+[![Badge Version](https://img.shields.io/github/v/release/ArminJo/LCDBigNumbers?include_prereleases&color=yellow&logo=DocuSign&logoColor=white)](https://github.com/ArminJo/LCDBigNumbers/releases/latest)
  &nbsp; &nbsp; 
 [![Badge Commits since latest](https://img.shields.io/github/commits-since/ArminJo/LCDBigNumbers/latest?color=yellow)](https://github.com/ArminJo/LCDBigNumbers/commits/master)
  &nbsp; &nbsp; 
@@ -23,8 +23,11 @@ Arduino library to write big numbers on a 1602 or 2004 LCD.
 # Features
 - **10 different fonts available. From 1x2 up to 3x4.**.
 - Support for special big characters `-`, `.` and `:`.
+- Fonts which require no gap between numbers (1x2 and 3x2, variant 2 and 3) are printed by default without this gap.
 - Support for **parallel and serial** LCD connections.
 - For all architectures.
+
+<br/>
 
 # Usage
 
@@ -37,7 +40,7 @@ Arduino library to write big numbers on a 1602 or 2004 LCD.
 #include "LCDBigNumbers.hpp" // Include sources for LCD big number generation
 
 LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
-LCDBigNumbers bigNumberLCD(&myLCD, 3, 4, 1); // Use 3x4 numbers, 1. variant
+LCDBigNumbers bigNumberLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1); // Use 3x4 numbers, 1. variant
 
 void setup() {
     myLCD.begin(LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS and LCD_ROWS are set by LCDBigNumbers.hpp depending on the defined display
@@ -49,28 +52,33 @@ void setup() {
 }
 ```
 
+<br/>
+
 # API
 **All print functions are available!**
 
 ```c++
 void begin();
 void write();
-void writeAt(uint8_t aNumber, uint8_t aLeftStartColumnIndex, uint8_t aStartRowIndex = 0);
+void writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
 void setBigNumberCursor(uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
 void enableGapBetweenNumbers();
 void disableGapBetweenNumbers();
 
-// Convenience functions
+// LCD convenience functions
 void clearLine(LiquidCrystal *aLCD, uint_fast8_t aLineNumber);
 void printSpaces(LiquidCrystal *aLCD, uint_fast8_t aNumberOfSpacesToPrint);
 void testBigNumbers(LiquidCrystal *aLCD);
 ```
-# Wokwi
-- [Wokwi](https://wokwi.com/projects/346534078384702034) life BigNumbersDemo example.
-- [Wokwi](https://wokwi.com/projects/346661429974139474) life SimpleClock example.
+
+<br/>
+
+# Examples on Wokwi
+- [Wokwi BigNumbersDemo example](https://wokwi.com/projects/346534078384702034).
+- [Wokwi SimpleClock example](https://wokwi.com/projects/346661429974139474).
 
 # Screenshots
-[Wokwi](https://wokwi.com/projects/346534078384702034) screenshots of [BigNumbersDemo example](https://github.com/ArminJo/LCDBigNumbers/tree/master/examples/BigNumbersDemo)
+Screenshots of [BigNumbersDemo example](https://github.com/ArminJo/LCDBigNumbers/tree/master/examples/BigNumbersDemo).
 
 | Size | Variant |  |  |  |
 |-|-|-|-|-|
@@ -85,7 +93,9 @@ void testBigNumbers(LiquidCrystal *aLCD);
 | 3x4 | 1 | ![](pictures/3x4_1a.png) | ![](pictures/3x4_1b.png) | ![](pictures/3x4_1x.png) |
 | 3x4 | 2 | ![](pictures/3x4_2a.png) | ![](pictures/3x4_2b.png) | ![](pictures/3x4_2x.png) |
 
-# Compile options / macros for this software
+<br/>
+
+# Compile options / macros for this library
 To customize the library to different requirements, there are some compile options / macros available.<br/>
 These macros must be defined in your program **before** the line `#include <LCDBigNumbers.hpp>` to take effect.<br/>
 Modify them by enabling / disabling them, or change the values if applicable.
@@ -102,13 +112,15 @@ And now our problem with Arduino is: **How to set [compile options](#compile-opt
 IDE's like [Sloeber](https://github.com/ArminJo/ServoEasing#modifying-compile-options--macros-with-sloeber-ide) or [PlatformIO](https://github.com/ArminJo/ServoEasing#modifying-compile-options--macros-with-platformio) support this by allowing to specify a set of options per project.
 They add these options at each compiler call e.g. `-DTRACE`.<br/>
 But Arduino lacks this feature. So the **workaround** is not to compile all sources separately, but to concatenate them to one huge source file by including them in your source.
-This is done by e.g. `#include "ServoEasing.hpp"`.
+This is done by e.g. `#include "LCDBigNumbers.hpp"`.
 <br/>
-But why not `#include "ServoEasing.cpp"`?<br/>
+But why not `#include "LCDBigNumbers.cpp"`?<br/>
 Try it and you will see tons of errors, because each function of the *.cpp file is now compiled twice,
 first by compiling the huge file and second by compiling the *.cpp file separately, like described above.
 So using the extension *cpp* is not longer possible, and one solution is to use *hpp* as extension, to show that it is an included *.cpp file.
 Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sense.
+
+<br/>
 
 # Revision History
 
