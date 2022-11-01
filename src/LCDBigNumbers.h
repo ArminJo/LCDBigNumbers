@@ -27,6 +27,8 @@
 #define _LCD_BIG_NUMBERS_H
 
 #include <Arduino.h>
+#define ONE_COLUMN_SPACE_CHARACTER      '|' // This character is printed as a one column space. Normal spaces are printed as a space with the width of the number.
+#define ONE_COLUMN_SPACE_STRING         "|" // This string is printed as a one column space. Normal spaces are printed as a space with the width of the number.
 
 #if !defined(USE_PARALLEL_2004_LCD) && !defined(USE_PARALLEL_1602_LCD) && !defined(USE_SERIAL_2004_LCD) && !defined(USE_SERIAL_1602_LCD)
 #define USE_PARALLEL_2004_LCD    // Use parallel 2004 LCD as default

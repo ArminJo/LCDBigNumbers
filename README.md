@@ -16,6 +16,8 @@ Arduino library to write big numbers on a 1602 or 2004 LCD.
 <br/>
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
+Available as [Arduino library "LCDBigNumbers"](https://www.arduinolibraries.info/libraries/lcdbignumbers).
+
 </div>
 
 <br/>
@@ -47,11 +49,12 @@ void setup() {
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
     
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-- 47.11"));
+    bigNumberLCD.print(F("--" ONE_COLUMN_SPACE_STRING "47.11"));
     bigNumberLCD.writeAt(':',19); // Because numbers have by default a trailing but no leading gap.
 }
 ```
-
+A **space character** is always renderd as an empty number with the size and the gap of one number. To have an one column space with the height of a number, you must use `ONE_COLUMN_SPACE_STRING` like above or `ONE_COLUMN_SPACE_CHARACTER` like in `bigNumberLCD.print(ONE_COLUMN_SPACE_CHARACTER)`.<br/>
+The `ONE_COLUMN_SPACE_CHARACTER` it is by default a bar `|`.
 <br/>
 
 # API
@@ -124,8 +127,10 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 
 # Revision History
 
+### Version 1.1.0
+- Changed handling of space and therfore introduced `ONE_COLUMN_SPACE_STRING` and `ONE_COLUMN_SPACE_CHARACTER`.
 ### Version 1.0.0
-Initial Arduino library version.
+ Initial Arduino library version.
 
 # Requests for modifications / extensions
 Please write me a PM including your motivation/problem if you need a modification or an extension.

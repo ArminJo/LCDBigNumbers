@@ -2,6 +2,7 @@
  *  SimpleClock.cpp
  *
  *  Shows a (fast) running clock with big numbers on a 2004 LCD.
+  * https://wokwi.com/projects/346661429974139474
  *
  *  Copyright (C) 2022  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
@@ -92,10 +93,11 @@ void loop() {
          * Do blinking colon
          */
         if (Seconds % 2 == 1) {
-            bigNumberLCD.print(F(": "));
+            bigNumberLCD.print(':');
         } else {
-            bigNumberLCD.print(F("  "));
+            bigNumberLCD.print(ONE_COLUMN_SPACE_CHARACTER);
         }
+        bigNumberLCD.setBigNumberCursor(12);
 
         /*
          * Print minutes
