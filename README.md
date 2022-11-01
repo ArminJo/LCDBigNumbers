@@ -16,7 +16,7 @@ Arduino library to write big numbers on a 1602 or 2004 LCD.
 <br/>
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
-Available as [Arduino library "LCDBigNumbers"](https://www.arduinolibraries.info/libraries/lcdbignumbers).
+Available as [Arduino library "LCDBigNumbers"](https://www.arduinolibraries.info/libraries/lcd-big-numbers).
 
 </div>
 
@@ -71,6 +71,7 @@ void disableGapBetweenNumbers();
 // LCD convenience functions
 void clearLine(LiquidCrystal *aLCD, uint_fast8_t aLineNumber);
 void printSpaces(LiquidCrystal *aLCD, uint_fast8_t aNumberOfSpacesToPrint);
+size_t printHex(LiquidCrystal *aLCD, uint16_t aHexByteValue);
 void testBigNumbers(LiquidCrystal *aLCD);
 ```
 
@@ -83,15 +84,15 @@ void testBigNumbers(LiquidCrystal *aLCD);
 # Screenshots
 Screenshots of [BigNumbersDemo example](https://github.com/ArminJo/LCDBigNumbers/tree/master/examples/BigNumbersDemo).
 
-| Size | Variant |  |  |  |
+| Size | Variant<br/>Number |  |  | Special characters |
 |-|-|-|-|-|
-| 1x2 | 1 | ![](pictures/1x2_1.png) |  |  |
-| 2x2 | 1 | ![](pictures/2x2_1.png) |  |  |
-| 3x2 | 1 | ![](pictures/3x2_1.png) |  | ![](pictures/3x2_1x.png) |
-| 3x2 | 2 | ![](pictures/3x2_2.png) |  |  |
-| 3x2 | 3 | ![](pictures/3x2_3.png) |  |  |
-| 2x3 | 1 | ![](pictures/2x3_1a.png) | ![](pictures/2x3_1b.png) |  |
-| 2x3 | 2 | ![](pictures/2x3_2a.png) | ![](pictures/2x3_2b.png) |  |
+| 1x2 | 1 | ![](pictures/1x2_1.png)  |  |  |
+| 2x2 | 1 | ![](pictures/2x2_1.png)  |  |  |
+| 3x2 | 1 | ![](pictures/3x2_1.png)  |  | ![](pictures/3x2_1x.png) |
+| 3x2 | 2 | ![](pictures/3x2_2.png)  |  |  |
+| 3x2 | 3 | ![](pictures/3x2_3.png)  |  |  |
+| 2x3 | 1 | ![](pictures/2x3_1a.png) |  | ![](pictures/2x3_1b.png) |
+| 2x3 | 2 | ![](pictures/2x3_2a.png) |  | ![](pictures/2x3_2b.png) |
 | 3x3 | 1 | ![](pictures/3x3_1a.png) | ![](pictures/3x3_1b.png) | ![](pictures/3x3_1x.png) |
 | 3x4 | 1 | ![](pictures/3x4_1a.png) | ![](pictures/3x4_1b.png) | ![](pictures/3x4_1x.png) |
 | 3x4 | 2 | ![](pictures/3x4_2a.png) | ![](pictures/3x4_2b.png) | ![](pictures/3x4_2x.png) |
@@ -128,7 +129,7 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 # Revision History
 
 ### Version 1.1.0
-- Changed handling of space and therfore introduced `ONE_COLUMN_SPACE_STRING` and `ONE_COLUMN_SPACE_CHARACTER`.
+- Changed handling of space and therefore introduced `ONE_COLUMN_SPACE_STRING` and `ONE_COLUMN_SPACE_CHARACTER`.
 ### Version 1.0.0
  Initial Arduino library version.
 

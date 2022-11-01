@@ -15,8 +15,8 @@
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
 
  *  You should have received a copy of the GNU General Public License
  *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
@@ -505,6 +505,21 @@ void clearLine(LiquidCrystal_I2C *aLCD, uint_fast8_t aLineNumber)
     aLCD->setCursor(0, aLineNumber);
     printSpaces(aLCD, LCD_COLUMNS);
     aLCD->setCursor(0, aLineNumber);
+}
+
+#if defined(USE_PARALLEL_LCD)
+size_t printHex(LiquidCrystal *aLCD, uint16_t aHexByteValue)
+#else
+size_t printHex(LiquidCrystal_I2C *aLCD, uint16_t aHexByteValue)
+#endif
+        {
+    aLCD->print(F("0x"));
+    size_t tPrintSize = 2;
+    if (aHexByteValue < 0x10 || (aHexByteValue > 0x100 && aHexByteValue < 0x1000)) {
+        aLCD->print('0'); // leading 0
+        tPrintSize++;
+    }
+    return aLCD->print(aHexByteValue, HEX) + tPrintSize;
 }
 
 /*

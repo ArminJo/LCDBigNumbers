@@ -15,8 +15,8 @@
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
 
  *  You should have received a copy of the GNU General Public License
  *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
@@ -97,6 +97,15 @@ void printSpaces(LiquidCrystal_I2C *aLCD, uint_fast8_t aNumberOfSpacesToPrint);
 void clearLine(LiquidCrystal *aLCD, uint_fast8_t aLineNumber);
 #else
 void clearLine(LiquidCrystal_I2C *aLCD, uint_fast8_t aLineNumber);
+#endif
+
+/*
+ * Prints 2 or 4 character Hex value with leading zero
+ */
+#if defined(USE_PARALLEL_LCD)
+size_t printHex(LiquidCrystal *aLCD, uint16_t aHexByteValue);
+#else
+size_t printHex(LiquidCrystal_I2C *aLCD, uint16_t aHexByteValue);
 #endif
 
 /*
