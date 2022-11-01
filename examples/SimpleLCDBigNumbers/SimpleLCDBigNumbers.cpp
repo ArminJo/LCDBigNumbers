@@ -65,7 +65,7 @@ void setup() {
 
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-- 47.11"));
+    bigNumberLCD.print(F("--" ONE_COLUMN_SPACE_STRING "47.11"));
     bigNumberLCD.writeAt(':',19); // Keep in mind that this numbers always have a trailing but no leading gap.
 }
 
