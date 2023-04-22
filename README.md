@@ -61,7 +61,8 @@ The `ONE_COLUMN_SPACE_CHARACTER` it is by default a bar `|`.
 **All print functions are available!**
 
 ```c++
-void begin();
+void init(const uint8_t aBigNumberFontIdentifier); // Reconfigure existing object to hold (another) font
+void begin(); // Generate font symbols in LCD controller
 void write();
 void writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
 void setBigNumberCursor(uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
@@ -72,7 +73,7 @@ void disableGapBetweenNumbers();
 void clearLine(LiquidCrystal *aLCD, uint_fast8_t aLineNumber);
 void printSpaces(LiquidCrystal *aLCD, uint_fast8_t aNumberOfSpacesToPrint);
 size_t printHex(LiquidCrystal *aLCD, uint16_t aHexByteValue);
-void testBigNumbers(LiquidCrystal *aLCD);
+void testBigNumbers(LiquidCrystal *aLCD); // Print all fonts, used in screenshots below, using one object
 ```
 
 <br/>

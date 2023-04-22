@@ -3,7 +3,7 @@
  *
  *  Arduino library to write big numbers on a 1602 or 2004 LCD.
  *
- *  Copyright (C) 2022  Armin Joachimsmeyer
+ *  Copyright (C) 2022-2023  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
  *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
@@ -575,6 +575,9 @@ void showCustomCharacters(LiquidCrystal_I2C *aLCD)
 }
 
 #if defined(USE_PARALLEL_LCD)
+/*
+ * Print all fonts, used in screenshots, using one object
+ */
 void testBigNumbers(LiquidCrystal *aLCD)
 #else
 void testBigNumbers(LiquidCrystal_I2C *aLCD)

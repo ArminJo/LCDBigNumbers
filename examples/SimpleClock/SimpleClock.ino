@@ -49,7 +49,7 @@ LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS 
  * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1,
  * BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_2
  */
-LCDBigNumbers bigNumberLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1); // Use 3x3 numbers
+LCDBigNumbers ThreeLineNumbersLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1); // Use 3x3 numbers
 
 void setup() {
     Serial.begin(115200);
@@ -63,7 +63,7 @@ void setup() {
     myLCD.clear();
     myLCD.backlight();
 #endif
-    bigNumberLCD.begin(); // Creates custom character used for generating big numbers
+    ThreeLineNumbersLCD.begin(); // Creates custom character used for generating big numbers
     myLCD.setCursor(0, 0);
     myLCD.print(F("Clock demo"));
     myLCD.setCursor(0, 1);
@@ -83,29 +83,29 @@ void loop() {
         /*
          * Print hours
          */
-        bigNumberLCD.setBigNumberCursor(2);
+        ThreeLineNumbersLCD.setBigNumberCursor(2);
         if (Hours < 10) {
-            bigNumberLCD.print('0');
+            ThreeLineNumbersLCD.print('0');
         }
-        bigNumberLCD.print(Hours);
+        ThreeLineNumbersLCD.print(Hours);
 
         /*
          * Do blinking colon
          */
         if (Seconds % 2 == 1) {
-            bigNumberLCD.print(':');
+            ThreeLineNumbersLCD.print(':');
         } else {
-            bigNumberLCD.print(ONE_COLUMN_SPACE_CHARACTER);
+            ThreeLineNumbersLCD.print(ONE_COLUMN_SPACE_CHARACTER);
         }
-        bigNumberLCD.setBigNumberCursor(12);
+        ThreeLineNumbersLCD.setBigNumberCursor(12);
 
         /*
          * Print minutes
          */
         if (Minutes < 10) {
-            bigNumberLCD.print('0');
+            ThreeLineNumbersLCD.print('0');
         }
-        bigNumberLCD.print(Minutes);
+        ThreeLineNumbersLCD.print(Minutes);
 
         /*
          * Go to next minute
