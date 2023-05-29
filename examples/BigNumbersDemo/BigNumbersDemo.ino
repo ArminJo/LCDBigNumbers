@@ -4,7 +4,7 @@
  *  Shows all big numbers on a 1602 or 2004 LCD.
  *  https://wokwi.com/projects/346534078384702034
  *
- *  Copyright (C) 2022  Armin Joachimsmeyer
+ *  Copyright (C) 2022-2023  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
  *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
