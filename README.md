@@ -129,6 +129,9 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 
 # Revision History
 
+### Version 1.1.1
+- Removed compiler warning.
+
 ### Version 1.1.0
 - Changed handling of space and therefore introduced `ONE_COLUMN_SPACE_STRING` and `ONE_COLUMN_SPACE_CHARACTER`.
 ### Version 1.0.0
