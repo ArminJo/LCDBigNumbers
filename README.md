@@ -49,16 +49,21 @@ void setup() {
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
     
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("--" ONE_COLUMN_SPACE_STRING "47.11"));
-    bigNumberLCD.writeAt(':',19); // Because numbers have by default a trailing but no leading gap.
+    bigNumberLCD.print(-47.11, 2); // use the standard print function
+    delay(2000);
+    bigNumberLCD.setBigNumberCursor(0, 0); // row specification is redundant here for a 4 row font :-)
+    bigNumberLCD.print(F(ONE_COLUMN_HYPHEN_STRING ONE_COLUMN_SPACE_STRING "47.11:")); // print a number string
 }
 ```
-A **space character** is always renderd as an empty number with the size and the gap of one number. To have an one column space with the height of a number, you must use `ONE_COLUMN_SPACE_STRING` like above or `ONE_COLUMN_SPACE_CHARACTER` like in `bigNumberLCD.print(ONE_COLUMN_SPACE_CHARACTER)`.<br/>
+A **space character** is always rendered as an empty space with the size and the gap of a number. To have an one column space with the height of a number, you must use `ONE_COLUMN_SPACE_STRING` like above or `ONE_COLUMN_SPACE_CHARACTER` like in `bigNumberLCD.print(ONE_COLUMN_SPACE_CHARACTER)`.<br/>
 The `ONE_COLUMN_SPACE_CHARACTER` it is by default a bar `|`.
+
+A **hyphen / minus character** is always rendered with the gap of a number. To have an one column hyphen, you must use `ONE_COLUMN_HYPHEN_STRING` like above or `ONE_COLUMN_HYPHEN_CHARACTER` like in `bigNumberLCD.print(ONE_COLUMN_HYPHEN_CHARACTER)`.<br/>
+The `ONE_COLUMN_HYPHEN_CHARACTER` it is by default a underscore `_`.
 <br/>
 
 # API
-**All print functions are available!**
+**All print functions with base <= 10 like print(1234, 10) are available!**
 
 ```c++
 void init(const uint8_t aBigNumberFontIdentifier); // Reconfigure existing object to hold (another) font
@@ -85,15 +90,15 @@ void testBigNumbers(LiquidCrystal *aLCD); // Print all fonts, used in screenshot
 # Screenshots
 Screenshots of [BigNumbersDemo example](https://github.com/ArminJo/LCDBigNumbers/tree/master/examples/BigNumbersDemo).
 
-| Size | Variant<br/>Number |  |  | Special characters |
+| Size | Variant<br/>Number |  |  |  |
 |-|-|-|-|-|
 | 1x2 | 1 | ![](pictures/1x2_1.png)  |  |  |
-| 2x2 | 1 | ![](pictures/2x2_1.png)  |  |  |
+| 2x2 | 1 | ![](pictures/2x2_1.png)  |  | ![](pictures/2x2_1x.png) |
 | 3x2 | 1 | ![](pictures/3x2_1.png)  |  | ![](pictures/3x2_1x.png) |
-| 3x2 | 2 | ![](pictures/3x2_2.png)  |  |  |
-| 3x2 | 3 | ![](pictures/3x2_3.png)  |  |  |
-| 2x3 | 1 | ![](pictures/2x3_1a.png) |  | ![](pictures/2x3_1b.png) |
-| 2x3 | 2 | ![](pictures/2x3_2a.png) |  | ![](pictures/2x3_2b.png) |
+| 3x2 | 2 | ![](pictures/3x2_2.png)  |  | ![](pictures/3x2_2x.png) |
+| 3x2 | 3 | ![](pictures/3x2_3.png)  |  | ![](pictures/3x2_3x.png) |
+| 2x3 | 1 | ![](pictures/2x3_1a.png) | ![](pictures/2x3_1b.png) | ![](pictures/2x3_1x.png) |
+| 2x3 | 2 | ![](pictures/2x3_2a.png) | ![](pictures/2x3_2b.png) | ![](pictures/2x3_2x.png) |
 | 3x3 | 1 | ![](pictures/3x3_1a.png) | ![](pictures/3x3_1b.png) | ![](pictures/3x3_1x.png) |
 | 3x4 | 1 | ![](pictures/3x4_1a.png) | ![](pictures/3x4_1b.png) | ![](pictures/3x4_1x.png) |
 | 3x4 | 2 | ![](pictures/3x4_2a.png) | ![](pictures/3x4_2b.png) | ![](pictures/3x4_2x.png) |
@@ -128,6 +133,9 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 <br/>
 
 # Revision History
+
+### Version 1.2.0
+- Support for floating point numbers.
 
 ### Version 1.1.1
 - Removed compiler warning.
