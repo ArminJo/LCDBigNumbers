@@ -71,6 +71,7 @@ public:
 #endif
     const uint8_t NumberWidth;
     const uint8_t NumberHeight;
+    uint8_t FontVariant;
     const uint8_t (*bigNumbersCustomPatterns)[8];
     uint8_t NumberOfCustomPatterns;
     const uint8_t *bigNumbersFont;
@@ -89,8 +90,9 @@ public:
     void _createChar(uint8_t location, const uint8_t *charmap);
 
     void init(const uint8_t aBigNumberFontIdentifier); // Internal function to select the appropriate font arrays
-    void write();
-    void writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
+    size_t write();
+    size_t writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
+    size_t writeBigNumber(uint8_t aNumberOrSpecialCharacter);
     void setBigNumberCursor(uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0);
 
     void begin(); // Creates custom character used for generating big numbers

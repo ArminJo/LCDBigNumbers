@@ -141,11 +141,11 @@ const uint8_t bigNumbers3x2_1[2][33] PROGMEM = {               // 2-line numbers
     { 0xFE, 0x04, 0x05, 0xFF,0x01,0xFF, 0x01,0xFF,0x01, 0xFF,0x01,0x01, 0x01,0x01,0xFF, 0xFE,0xFE,0xFF, 0x01,0x01,0xFF, 0xFF,0x01,0xFF, 0xFE,0xFE,0xFF, 0xFF,0x01,0xFF, 0x01,0x01,0xFF}
 };
 
-// 3x2 https://forum.arduino.cc/t/display-3-character-wide-big-digits-on-16x2-lcd/905360
+// 3x2 https://forum.arduino.cc/t/display-3-character-wide-big-digits-on-16x2-lcd/905360 bottom of page
 const uint8_t bigNumbers3x2CustomPatterns_2[8][8] PROGMEM = {
   { B11111,B11111,B11111,B00000,B00000,B00000,B00000,B00000 }, // 0 Upper bar
   { B00000,B00000,B00000,B00000,B00000,B11111,B11111,B11111 }, // 1 Lower bar
-  { B11111,B11111,B11111,B00000,B00000,B00000,B11111,B11111 }, // 2 Upper and lower bar
+  { B11111,B11111,B11111,B00000,B00000,B00000,B11111,B11111 }, // 2 Upper and lower bar for 5,6
   { B11100,B11100,B11100,B11100,B11100,B11100,B11100,B11100 }, // 3 Left bar
   { B00000,B00000,B00000,B00000,B00000,B11100,B11100,B11100 }, // 4 Left lower bar for 2
   { B11100,B11100,B11100,B00000,B00000,B00000,B11100,B11100 }, // 5 Left upper and lower bar for 5,6
@@ -163,16 +163,16 @@ const uint8_t bigNumbers3x2CustomPatterns_3[8][8] PROGMEM = {
 { B11100, B11110, B11110, B11110, B11110, B11110, B11110, B11100}, // 0 left bar
 { B00111, B01111, B01111, B01111, B01111, B01111, B01111, B00111}, // 1 right bar
 { B11111, B11111, B00000, B00000, B00000, B00000, B11111, B11111}, // 2 upper and lower bar
-{ B11110, B11100, B00000, B00000, B00000, B00000, B11000, B11100}, // only in 5
-{ B01111, B00111, B00000, B00000, B00000, B00000, B00011, B00111}, // 4
-{ B00000, B00000, B00000, B00000, B00000, B00000, B11111, B11111},
-{ B00000, B00000, B00000, B00000, B00000, B00000, B00111, B01111}, // 6
-{ B11111, B11111, B00000, B00000, B00000, B00000, B00000, B00000}
+{ B11110, B11100, B00000, B00000, B00000, B00000, B11000, B11100}, // 3 left upper and lower rounded
+{ B01111, B00111, B00000, B00000, B00000, B00000, B00011, B00111}, // 4 right upper and lower rounded
+{ B00000, B00000, B00000, B00000, B00000, B00000, B11111, B11111}, // 5 right lower
+{ B00000, B00000, B00000, B00000, B00000, B00000, B00111, B01111}, // 6 right lower rounded
+{ B11111, B11111, B00000, B00000, B00000, B00000, B00000, B00000}  // 7 upper bar
 };
 const uint8_t bigNumbers3x2_3[2][33] PROGMEM = {                   // 2-line numbers
 //    "-"   "."   ":"         0               1               2               3               4               5               6               7               8               9
     { 0xFE, 0xFE, 0xA5, 0x01,0x07,0x00, 0xFE,0x00,0xFE, 0x04,0x02,0x00, 0x04,0x02,0x00, 0x01,0x05,0x00, 0x01,0x02,0x03, 0x01,0x02,0x03, 0x01,0x07,0x00, 0x01,0x02,0x00, 0x01,0x02,0x00},
-    { 0x07, 0x05, 0xA5, 0x01,0x05,0x00, 0xFE,0x00,0xFE, 0x01,0x05,0x05, 0x06,0x05,0x00, 0xFE,0xFE,0x00, 0x06,0x05,0x00, 0x01,0x05,0x00, 0xFE,0xFE,0x00, 0x01,0x05,0x00, 0x06,0x05,0x00}
+    { 0x07, 0x06, 0xA5, 0x01,0x05,0x00, 0xFE,0x00,0xFE, 0x01,0x05,0x05, 0x06,0x05,0x00, 0xFE,0xFE,0x00, 0x06,0x05,0x00, 0x01,0x05,0x00, 0xFE,0xFE,0x00, 0x01,0x05,0x00, 0x06,0x05,0x00}
 };
 
 // http://woodsgood.ca/projects/2015/01/16/large-numbers-on-small-displays/
@@ -208,7 +208,7 @@ const uint8_t bigNumbers2x3_2[][23] PROGMEM = {                   // 3-line numb
 //    "-"   "."   ":"       0          1          2          3          4          5          6          7          8          9
     { 0xFE, 0xFE, 0x07, 0x04,0x03, 0x00,0x05, 0x02,0x03, 0x02,0x03, 0x05,0x06, 0x04,0x02, 0x05,0xFE, 0x02,0x03, 0x04,0x03, 0x04,0x03},
     { 0x02, 0xFE, 0x07, 0x05,0x06, 0xFE,0x05, 0x04,0x02, 0x00,0x03, 0x02,0x03, 0x02,0x03, 0x04,0x03, 0xFE,0x06, 0x04,0x03, 0x02,0x03},
-    { 0xFE, 0x00, 0xFE, 0x02,0x02, 0x00,0x02, 0x02,0x02, 0x02,0x02, 0xFE,0x00, 0x02,0x02, 0x02,0x02, 0xFE,0x00, 0x02,0x02, 0xFE,0x00}
+    { 0xFE, 0x01, 0xFE, 0x02,0x02, 0x00,0x02, 0x02,0x02, 0x02,0x02, 0xFE,0x00, 0x02,0x02, 0x02,0x02, 0xFE,0x00, 0x02,0x02, 0xFE,0x00}
 };
 
 // 3x4 Font custom patterns http://woodsgood.ca/projects/2015/03/06/3-4-line-big-font-numerals/
@@ -272,12 +272,13 @@ public:
 #endif
     uint8_t NumberWidth;
     uint8_t NumberHeight;
+    uint8_t FontVariant;
     const uint8_t (*bigNumbersCustomPatterns)[8];
     uint8_t NumberOfCustomPatterns;
     const uint8_t *bigNumbersFont;
     bool forceGapBetweenNumbers;    // The default depends on the font used
     uint8_t upperLeftColumnIndex;   // Start of the next character
-    uint8_t maximumColumnIndex;     // Maximum of columns to be written. Used to not clear the gap after a number which ends at the last column. ( 44 bytes program space)
+    uint8_t maximumColumnIndex; // Maximum of columns to be written. Used to not clear the gap after a number which ends at the last column. ( 44 bytes program space)
     uint8_t upperLeftRowIndex;      // Start of the next character
 
     /*
@@ -289,8 +290,7 @@ public:
     }
 
     size_t write(uint8_t aBigNumberValue) {
-        writeBigNumber(aBigNumberValue);
-        return 1; // assume success
+        return writeBigNumber(aBigNumberValue);
     }
 
     /*
@@ -321,6 +321,7 @@ public:
         setBigNumberCursor(0);
         NumberWidth = ((aBigNumberFontIdentifier & COLUMN_MASK) >> 2) + 1;
         NumberHeight = (aBigNumberFontIdentifier & ROW_MASK) + 1;
+        FontVariant = ((aBigNumberFontIdentifier & VARIANT_MASK) >> 4) + 1;
         NumberOfCustomPatterns = 8;
         forceGapBetweenNumbers = true;
         switch (aBigNumberFontIdentifier) {
@@ -403,8 +404,9 @@ public:
      * Special characters always have the width of 1!
      * After each number one column gap is inserted. The gap is cleared, if not at the (last + 1) column!
      * @param aNumber - byte 0x00 to 0x09 or ASCII number or one of ' ', '|', '-', '_', '.' and ':' special characters to display
+     * @return  The number of columns written (1 to 4 currently)
      */
-    void writeBigNumber(uint8_t aNumberOrSpecialCharacter) {
+    size_t writeBigNumber(uint8_t aNumberOrSpecialCharacter) {
         uint_fast8_t tFontArrayOffset = 0;
         uint_fast8_t tCharacterWidth = 1;
         /*
@@ -422,7 +424,7 @@ public:
         } else if (aNumberOrSpecialCharacter == ONE_COLUMN_SPACE_CHARACTER) {
             // print a one column space
             aNumberOrSpecialCharacter = ' ';
-        } else  {
+        } else {
             if (aNumberOrSpecialCharacter > 9) {
                 // if not byte 0x00 to 0x09, convert number character to ASCII
                 aNumberOrSpecialCharacter -= '0'; // convert ASCII value to number
@@ -485,6 +487,7 @@ public:
                     LCD->setCursor(upperLeftColumnIndex + 1, upperLeftRowIndex + tRow);
                     LCD->write(' '); // Blank
                 }
+                tCharacterWidth++;
             }
             upperLeftColumnIndex++; // This provides one column gap between big numbers, but not between special characters.
         }
@@ -492,16 +495,18 @@ public:
 #if defined(LOCAL_DEBUG)
         Serial.println();
 #endif
+        return tCharacterWidth;
     }
+
     /**
      * Draws a big digit of size aNumberWidth x aNumberHeight
      * @param aNumber - Number to display, if > 9 a blank character is drawn
      * @param aUpperLeftColumnIndex - Starts with 0, no check!
      * @param aStartRowIndex - Starts with 0, no check!
      */
-    void writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0) {
+    size_t writeAt(uint8_t aNumber, uint8_t aUpperLeftColumnIndex, uint8_t aUpperLeftRowIndex = 0) {
         setBigNumberCursor(aUpperLeftColumnIndex, aUpperLeftRowIndex);
-        writeBigNumber(aNumber);
+        return writeBigNumber(aNumber);
     }
 
 };
@@ -613,9 +618,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     bigNumberLCD.begin(); // Generate font symbols in LCD controller
     bigNumberLCD.print(F("0123456789 -.:")); // no special space required, we have an 1 column font
 
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0, 2);
-    bigNumberLCD.print(F("-47.11"));
+    bigNumberLCD.print(F("-42.38"));
     delay(DEFAULT_TEST_DELAY);
 
     /*
@@ -640,9 +645,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-47.11"));
+    bigNumberLCD.print(F("-42.38"));
     delay(DEFAULT_TEST_DELAY);
 
     /*
@@ -667,9 +672,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-47.11:"));
+    bigNumberLCD.print(F("-42.38:"));
 #endif
 
     delay(DEFAULT_TEST_DELAY);
@@ -695,9 +700,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-47.11:"));
+    bigNumberLCD.print(F("-42.38:"));
     delay(DEFAULT_TEST_DELAY);
 
     /*
@@ -721,9 +726,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-47.11"));
+    bigNumberLCD.print(F("-42.38"));
     delay(DEFAULT_TEST_DELAY);
 
 #if LCD_ROWS > 2
@@ -744,9 +749,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
-    bigNumberLCD.setBigNumberCursor(0,1);
-    bigNumberLCD.print(F("-47.11"));
+    // Print "-42.38 :"
+    bigNumberLCD.setBigNumberCursor(0, 1);
+    bigNumberLCD.print(F("-42.38"));
     delay(DEFAULT_TEST_DELAY);
 
     /*
@@ -763,9 +768,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
-    bigNumberLCD.setBigNumberCursor(0,1);
-    bigNumberLCD.print(F("-47.11"));
+    // Print "-42.38 :"
+    bigNumberLCD.setBigNumberCursor(0, 1);
+    bigNumberLCD.print(F("-42.38"));
     delay(DEFAULT_TEST_DELAY);
 
     /*
@@ -782,9 +787,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0, 1);
-    bigNumberLCD.print(F("-47.11:"));
+    bigNumberLCD.print(F("-42.38:"));
     delay(DEFAULT_TEST_DELAY);
 
     /****************
@@ -803,9 +808,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-47.11:"));
+    bigNumberLCD.print(F("-42.38:"));
     delay(DEFAULT_TEST_DELAY);
 
     /*
@@ -821,9 +826,9 @@ void testBigNumbers(LiquidCrystal_I2C *aLCD)
     delay(DEFAULT_TEST_DELAY);
 
     aLCD->clear(); // Clear display
-    // Print "-47.11 :"
+    // Print "-42.38 :"
     bigNumberLCD.setBigNumberCursor(0);
-    bigNumberLCD.print(F("-47.11:"));
+    bigNumberLCD.print(F("-42.38:"));
     delay(DEFAULT_TEST_DELAY);
 #endif // LCD_ROWS > 2
 }
