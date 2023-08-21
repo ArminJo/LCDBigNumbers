@@ -56,7 +56,7 @@ void setup() {
 #else
     myLCD.init();
     myLCD.clear();
-    myLCD.backlight();
+    myLCD.backlight(); // Switch backlight LED on
 #endif
     myLCD.print(F("Big numbers demo"));
     myLCD.setCursor(0, 1);

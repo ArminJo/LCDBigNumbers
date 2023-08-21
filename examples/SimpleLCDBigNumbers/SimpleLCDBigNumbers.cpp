@@ -60,7 +60,7 @@ void setup() {
 #else
     myLCD.init();
     myLCD.clear();
-    myLCD.backlight();
+    myLCD.backlight(); // Switch backlight LED on
 #endif
 
     bigNumberLCD.begin(); // Creates custom character used for generating big numbers
