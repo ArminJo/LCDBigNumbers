@@ -20,6 +20,8 @@ Available as [Arduino library "LCDBigNumbers"](https://www.arduinolibraries.info
 
 </div>
 
+#### If you find this library useful, please give it a star.
+
 <br/>
 
 # Features
@@ -111,7 +113,7 @@ These macros must be defined in your program **before** the line `#include <LCDB
 Modify them by enabling / disabling them, or change the values if applicable.
 
 | Name | Default value | Description |
-|-|-|-|
+|-|-:|-|
 | `USE_PARALLEL_2004_LCD` `USE_PARALLEL_1602_LCD` | USE_PARALLEL_2004_LCD is default | Use parallel 6 or 10 wire LCD connection with the [Arduino LiquidCrystal library](http://www.arduino.cc/en/Reference/LiquidCrystal). |
 | `USE_SERIAL_2004_LCD` `USE_SERIAL_1602_LCD` | not defined | Use serial 4 wire LCD connection provided by the [LiquidCrystal_I2C library](https://github.com/marcoschwartz/LiquidCrystal_I2C). |
 
@@ -134,6 +136,9 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 
 # Revision History
 
+### Version 1.2.1
+- Fixed bug of not working forceGapBetweenNumbers for BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1.
+
 ### Version 1.2.0
 - Support for floating point numbers.
 
@@ -144,8 +149,3 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 - Changed handling of space and therefore introduced `ONE_COLUMN_SPACE_STRING` and `ONE_COLUMN_SPACE_CHARACTER`.
 ### Version 1.0.0
  Initial Arduino library version.
-
-# Requests for modifications / extensions
-Please write me a PM including your motivation/problem if you need a modification or an extension.
-
-#### If you find this library useful, please give it a star.
