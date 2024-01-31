@@ -22,6 +22,8 @@ Available as [Arduino library "LCDBigNumbers"](https://www.arduinolibraries.info
 
 #### If you find this library useful, please give it a star.
 
+&#x1F30E; [Google Translate](https://translate.google.com/translate?sl=en&u=https://github.com/ArminJo/LCDBigNumbers)
+
 <br/>
 
 # Features
