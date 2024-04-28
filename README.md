@@ -137,6 +137,9 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 <br/>
 
 # Revision History
+### Version 1.2.2
+- Improved _createChar().
+- Added `VERSION_LCD_BIG_NUMBERS`.
 
 ### Version 1.2.1
 - Fixed bug of not working forceGapBetweenNumbers for BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1.
