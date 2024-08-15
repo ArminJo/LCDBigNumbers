@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/ArminJo/LCDBigNumbers"
   },
-  "version": "1.2.2",
+  "version": "1.2.3",
   "exclude": "pictures",
   "authors": {
     "name": "Armin Joachimsmeyer",

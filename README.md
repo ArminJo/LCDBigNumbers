@@ -137,6 +137,9 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 <br/>
 
 # Revision History
+### Version 1.2.3
+- Fixed bug in clearing the gap between numbers.
+
 ### Version 1.2.2
 - Improved _createChar().
 - Added `VERSION_LCD_BIG_NUMBERS`.
