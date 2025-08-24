@@ -2,9 +2,9 @@
  *  SimpleClock.cpp
  *
  *  Shows a (fast) running clock with big numbers on a 2004 LCD.
-  * https://wokwi.com/projects/346661429974139474
+ * https://wokwi.com/projects/346661429974139474
  *
- *  Copyright (C) 2022  Armin Joachimsmeyer
+ *  Copyright (C) 2022-2025  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
  *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
@@ -74,38 +74,24 @@ void setup() {
 
 int Seconds = 0;
 int Minutes = 48;
-int Hours = 11;
+int Hours = 9;
 unsigned long lastMillisOfClockUpdate = 0;
 
 void loop() {
     if (millis() - lastMillisOfClockUpdate > 1000) { // Fast mode :-), do not wait 60 seconds
         lastMillisOfClockUpdate += 1000;
         /*
-         * Print hours
+         * Print hours, blinking colon and
          */
         ThreeLineNumbersLCD.setBigNumberCursor(2);
-        if (Hours < 10) {
-            ThreeLineNumbersLCD.print('0');
-        }
-        ThreeLineNumbersLCD.print(Hours);
-
-        /*
-         * Do blinking colon
-         */
+        char tString[7];
         if (Seconds % 2 == 1) {
-            ThreeLineNumbersLCD.print(':');
+            snprintf_P(tString, sizeof(tString), PSTR("%2d:" ONE_COLUMN_SPACE_STRING "%02d"), Hours, Minutes);
         } else {
-            ThreeLineNumbersLCD.print(ONE_COLUMN_SPACE_CHARACTER);
+            snprintf_P(tString, sizeof(tString), PSTR("%2d" ONE_COLUMN_SPACE_STRING ONE_COLUMN_SPACE_STRING "%02d"), Hours,
+                    Minutes);
         }
-        ThreeLineNumbersLCD.setBigNumberCursor(12);
-
-        /*
-         * Print minutes
-         */
-        if (Minutes < 10) {
-            ThreeLineNumbersLCD.print('0');
-        }
-        ThreeLineNumbersLCD.print(Minutes);
+        ThreeLineNumbersLCD.print(tString);
 
         /*
          * Go to next minute

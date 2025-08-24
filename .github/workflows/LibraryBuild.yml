@@ -33,7 +33,7 @@ jobs:
 
     env:
       # Comma separated list without double quotes around the list.
-      REQUIRED_LIBRARIES: Servo,ServoEasing,IRremote,NeoPatterns,Adafruit NeoPixel,PlayRtttl
+      REQUIRED_LIBRARIES:
 
     strategy:
       matrix:

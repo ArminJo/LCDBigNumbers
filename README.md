@@ -67,7 +67,7 @@ The `ONE_COLUMN_HYPHEN_CHARACTER` it is by default a underscore `_`.
 <br/>
 
 # API
-**All print functions with base <= 10 like print(1234, 10) are available!**
+**Only print functions with base <= 10 like print(1234, 8) are available because Hex characters are NOT supported!**
 
 ```c++
 void init(const uint8_t aBigNumberFontIdentifier); // Reconfigure existing object to hold (another) font
@@ -121,10 +121,14 @@ Modify them by enabling / disabling them, or change the values if applicable.
 
 # Why *.hpp instead of *.cpp?
 **Every \*.cpp file is compiled separately** by a call of the compiler exclusively for this cpp file. These calls are managed by the IDE / make system.
-In the Arduino IDE the calls are executed when you click on *Verify* or *Upload*.<br/>
-And now our problem with Arduino is: **How to set [compile options](#compile-options--macros-for-this-library) for all *.cpp files, especially for libraries used?**<br/>
-IDE's like [Sloeber](https://github.com/ArminJo/ServoEasing#modifying-compile-options--macros-with-sloeber-ide) or [PlatformIO](https://github.com/ArminJo/ServoEasing#modifying-compile-options--macros-with-platformio) support this by allowing to specify a set of options per project.
-They add these options at each compiler call e.g. `-DTRACE`.<br/>
+In the Arduino IDE the calls are executed when you click on *Verify* or *Upload*.
+
+And now **our problem with Arduino** is:<br/>
+**How to set [compile options](#compile-options--macros-for-this-library) for all *.cpp files, especially for libraries used?**<br/>
+IDE's like [Sloeber](https://github.com/Arduino-IRremote/Arduino-IRremote?tab=readme-ov-file#modifying-compile-options--macros-with-sloeber-ide) or
+[PlatformIO](https://github.com/Arduino-IRremote/Arduino-IRremote?tab=readme-ov-file#modifying-compile-options--macros-with-platformio) support this by allowing to specify a set of options per project.
+They add these options at each compiler call e.g. `-DTRACE`.
+
 But Arduino lacks this feature. So the **workaround** is not to compile all sources separately, but to concatenate them to one huge source file by including them in your source.
 This is done by e.g. `#include "LCDBigNumbers.hpp"`.
 <br/>

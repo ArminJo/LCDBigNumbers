@@ -3,7 +3,7 @@
  *
  *  Arduino library to write big numbers on a 1602 or 2004 LCD.
  *
- *  Copyright (C) 2022-2024  Armin Joachimsmeyer
+ *  Copyright (C) 2022-2025  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
  *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
@@ -53,6 +53,7 @@
 //#define USE_SERIAL_1602_LCD
 
 #if !defined(USE_PARALLEL_2004_LCD) && !defined(USE_PARALLEL_1602_LCD) && !defined(USE_SERIAL_2004_LCD) && !defined(USE_SERIAL_1602_LCD)
+#warning "No LCD type like USE_SERIAL_2004_LCD specified, therefore using the default USE_PARALLEL_2004_LCD"
 #define USE_PARALLEL_2004_LCD    // Use parallel 2004 LCD as default
 #endif
 
@@ -284,10 +285,12 @@ const uint8_t bigNumbers3x4_2[4][33] PROGMEM = {                         // 4-li
 
 // 4x4: https://github.com/wa1hco/BigFont
 // @formatter:on
-class LCDBigNumbers: public Print {
+class LCDBigNumbers: public Print { // @suppress("Class has a virtual method and non-virtual destructor")
 
 public:
-    virtual ~LCDBigNumbers(){}
+// If activated gives linker error: undefined reference to `operator delete(void*, unsigned int)'
+// If disabled I get a Eclipse warning: Class 'LCDBigNumbers' has virtual method 'flush' but non-virtual destructor
+//    virtual ~LCDBigNumbers() {}
 #if defined(USE_PARALLEL_LCD)
     LiquidCrystal *LCD;
 #else

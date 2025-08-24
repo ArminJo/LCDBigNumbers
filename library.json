@@ -1,13 +1,13 @@
 {
   "name": "LCDBigNumbers",
-  "keywords": "LCD",
+  "version": "1.2.3",
+  "keywords": "LCD, numbers, 1602, 2004",
   "description": "Arduino library to write big numbers on a 1602 or 2004 LCD.",
+  "homepage": "https://github.com/ArminJo/LCDBigNumbers",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ArminJo/LCDBigNumbers"
+    "url": "https://github.com/ArminJo/LCDBigNumbers.git"
   },
-  "version": "1.2.3",
-  "exclude": "pictures",
   "authors": {
     "name": "Armin Joachimsmeyer",
     "email": "armin.arduino@gmail.com",
@@ -16,5 +16,7 @@
   "license": "GPL-3.0-or-later",
   "frameworks": "arduino",
   "platforms": "*",
-  "headers": "LCDBigNumbers.hpp"
+  "headers": "LCDBigNumbers.hpp",
+  "examples": "examples/*/*.ino",
+  "export": {"exclude": [".github", "pictures"]}
 }
