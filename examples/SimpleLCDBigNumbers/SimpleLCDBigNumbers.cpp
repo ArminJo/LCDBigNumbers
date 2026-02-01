@@ -3,7 +3,7 @@
  *
  *  Shows big numbers on a 2004 LCD.
  *
- *  Copyright (C) 2022  Armin Joachimsmeyer
+ *  Copyright (C) 2022-2025  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
  *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
@@ -32,6 +32,7 @@
 //#define USE_PARALLEL_1602_LCD
 //#define USE_SERIAL_2004_LCD
 //#define USE_SERIAL_1602_LCD
+#include "LCDPrintUtils.hpp" // sets USE_PARALLEL_LCD or USE_SERIAL_LCD
 #include "LCDBigNumbers.hpp" // Include sources for LCD big number generation
 
 #if defined(USE_PARALLEL_LCD)

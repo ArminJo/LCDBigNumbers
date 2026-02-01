@@ -30,6 +30,7 @@
 //#define USE_PARALLEL_1602_LCD
 //#define USE_SERIAL_2004_LCD
 //#define USE_SERIAL_1602_LCD
+#include "LCDPrintUtils.hpp" // sets USE_PARALLEL_LCD or USE_SERIAL_LCD
 #include "LCDBigNumbers.hpp" // Include sources for LCD big number generation
 
 #if defined(USE_PARALLEL_LCD)
@@ -38,7 +39,6 @@ LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
 //LiquidCrystal myLCD(4, 5, 6, 7, 8, 9); // Sample connections starting at pin 4
 #else
 #define LCD_I2C_ADDRESS 0x27    // Default LCD address is 0x27 for a 20 chars and 4 line / 2004 display
-#include "LiquidCrystal_I2C.h"  // Use an up to date library version which has the init method
 LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS and LCD_ROWS are set by LCDBigNumbers.hpp depending on the defined display
 #endif
 

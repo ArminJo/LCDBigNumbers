@@ -58,7 +58,6 @@ jobs:
               All: -DUSE_PARALLEL_1602_LCD
 
           - arduino-boards-fqbn: arduino:avr:uno|USE_SERIAL_2004_LCD
-            required-libraries: LiquidCrystal I2C
             build-properties:
               All: -DUSE_SERIAL_2004_LCD
 
