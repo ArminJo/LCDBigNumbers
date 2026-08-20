@@ -141,6 +141,10 @@ Every other extension e.g. *cinclude* would do, but *hpp* seems to be common sen
 <br/>
 
 # Revision History
+### Version 1.2.4
+- Introduced explicitly AUTO_DETECT_LCD_COLUMNS for special cases.
+- New example MCP9808TemperatureOnLCD.
+
 ### Version 1.2.3
 - Fixed bug in clearing the gap between numbers.
 
