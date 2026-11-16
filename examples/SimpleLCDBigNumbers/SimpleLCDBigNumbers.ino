@@ -1,5 +1,5 @@
 /*
- *  SimpleLCDBigNumbers.cpp
+ *  SimpleLCDBigNumbers.ino
  *
  *  Shows big numbers on a 2004 LCD.
  *
@@ -18,7 +18,7 @@
  *  See the GNU General Public License for more details.
 
  *  You should have received a copy of the GNU General Public License
- *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
+ *  along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  *
  */
 
@@ -42,12 +42,12 @@ LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS 
 #endif
 
 /*
- * Available big number fonts are: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS_VARIANT_1,
+ * Available big number fonts are: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS,
  * BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_3,
- * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1,
+ * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS,
  * BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_2
  */
-LCDBigNumbers bigNumberLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1); // Use 3x4 numbers, 1. variant
+LCDBigNumbers BigNumbersLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1); // Use 3x4 numbers, 1. variant
 
 void setup() {
     Serial.begin(115200);
@@ -62,12 +62,11 @@ void setup() {
     myLCD.backlight(); // Switch backlight LED on
 #endif
 
-    bigNumberLCD.begin(); // Creates custom character used for generating big numbers
-    bigNumberLCD.setBigNumberCursor(0, 0); // row specification is redundant here for a 4 row font :-)
-    bigNumberLCD.print(-47.11, 2); // use the standard print function
+    BigNumbersLCD.begin(); // Must be after myLCD.begin() or myLCD.init().
+    BigNumbersLCD.print(-47.11, 2); // Use the standard print function for floating point. Cursor is at 0 0 after booting.
     delay(2000);
-    bigNumberLCD.setBigNumberCursor(0, 0); // row specification is redundant here for a 4 row font :-)
-    bigNumberLCD.print(F(ONE_COLUMN_HYPHEN_STRING ONE_COLUMN_SPACE_STRING "47.11:")); // print a number string
+    BigNumbersLCD.setBigNumberCursor(0, 0); // Here the row specification is redundant because it is a 4 row font :-)
+    BigNumbersLCD.print(F(ONE_COLUMN_HYPHEN_STRING ONE_COLUMN_SPACE_STRING "47.11:")); // Print the same number string with an additional trailing colon
 }
 
 void loop() {

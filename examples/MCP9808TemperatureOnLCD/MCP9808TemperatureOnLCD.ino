@@ -1,5 +1,5 @@
 /*
- *  MCP9808TemperatureOnLCD.cpp
+ *  MCP9808TemperatureOnLCD.ino
  *
  *  Read a MCP9808 sensor, and show value in BIG numbers on a 2004 LCD.
  *  With pin 2 you can toggle between 4 and 3 rows big numbers - for demonstration and optional additional information in bottom row.
@@ -7,14 +7,20 @@
  *
  *  Copyright (C) 2023-2026  Armin Joachimsmeyer
  *
+ *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
+ *
+ *  LCDBigNumbers is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *  See the GNU General Public License for more details.
-
- *  You should have received a copy of the GNU General Public License
- *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
  *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
 
 #include <Arduino.h>
@@ -41,7 +47,7 @@ LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS 
 #endif
 
 LCDBigNumbers BigNumbersLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1); // Use 3x4 numbers, 1. variant
-#define LCD_STRING_BUFFER_SIZE 6
+#define LCD_STRING_BUFFER_SIZE 8
 char sLCDStringBuffer[LCD_STRING_BUFFER_SIZE];
 
 /*
@@ -61,26 +67,7 @@ void printVCCOnLCD();
  */
 #define USE_BUTTON_0
 #include "EasyButtonAtInt01.hpp"
-uint8_t sLCDPageNumber;
-void handleLCDPageButtonPress(bool aButtonToggleState) {
-    (void) aButtonToggleState;
-    sLCDPageNumber++;
-    myLCD.clear();
-
-    if (sLCDPageNumber == 2) {
-        BigNumbersLCD.init(BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1);
-        Serial.print('4');
-        sLCDPageNumber = 0;
-    } else {
-        BigNumbersLCD.init(BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1);
-        Serial.print('3');
-    }
-}
-EasyButton StoreButtonAtPin2(&handleLCDPageButtonPress); // Button is connected to INT0 (pin2)
-
-// Helper macro for getting a macro definition as string
-#define STR_HELPER(x) #x
-#define STR(x) STR_HELPER(x)
+EasyButton StoreButtonAtPin2; // Button is connected to INT0 (pin2)
 
 void setup() {
 
@@ -94,7 +81,7 @@ void setup() {
     myLCD.clear();
     myLCD.backlight();  // Switch backlight LED on
 #endif
-    BigNumbersLCD.begin(); // This also sets cursor to 0.0
+    BigNumbersLCD.begin(); // Must be after myLCD.begin() or myLCD.init(). This also sets cursor to 0.0.
 
     myLCD.print(F("MCP9808 Temp. " VERSION_EXAMPLE));
     myLCD.setCursor(0, 1);
@@ -103,9 +90,10 @@ void setup() {
     // Set device address and check for connection
     if (TemperatureSensor.searchMCP9808OnI2C() == MCP9808_I2C_NOT_FOUND_ADDRESS) {
         Serial.print(F(" not found"));
+        myLCD.print(F(" not found"));
     } else {
         Serial.print(F("Device found at address 0x"));
-        Serial.print(TemperatureSensor._address,HEX);
+        Serial.print(TemperatureSensor._address, HEX);
         Serial.print(F(" with revision "));
         Serial.print(TemperatureSensor.getRevision()); // is 0
         Serial.print(F(" and manufacturer ID "));
@@ -127,12 +115,23 @@ void setup() {
 
     delay(4000);
     myLCD.clear();
-
 }
 
 void loop() {
 
     float tTemperature = ((float) (TemperatureSensor.getTemperatureTimes16()) / 16.0);
+    if (StoreButtonAtPin2.ButtonStateHasJustChanged) {
+        StoreButtonAtPin2.ButtonStateHasJustChanged = false;
+        myLCD.clear();
+
+        if (StoreButtonAtPin2.ButtonToggleState) {
+            BigNumbersLCD.loadFont(BIG_NUMBERS_FONT_3_COLUMN_3_ROWS);
+            Serial.print('3');
+        } else {
+            BigNumbersLCD.loadFont(BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1);
+            Serial.print('4');
+        }
+    }
     /*
      * Print the 3 or 4 line big digits here
      */

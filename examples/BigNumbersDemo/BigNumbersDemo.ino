@@ -1,10 +1,10 @@
 /*
- *  BigNumbersDemo.cpp
+ *  BigNumbersDemo.ino
  *
  *  Shows all big numbers on a 1602 or 2004 LCD.
  *  https://wokwi.com/projects/346534078384702034
  *
- *  Copyright (C) 2022-2023  Armin Joachimsmeyer
+ *  Copyright (C) 2022-2026  Armin Joachimsmeyer
  *
  *  This file is part of LCDBigNumbers https://github.com/ArminJo/LCDBigNumbers.
  *
@@ -19,7 +19,7 @@
  *  See the GNU General Public License for more details.
 
  *  You should have received a copy of the GNU General Public License
- *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
+ *  along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  *
  */
 
@@ -32,13 +32,15 @@
 #include "LCDBigNumbers.hpp" // Include sources for LCD big number generation
 
 #if defined(USE_PARALLEL_LCD)
-#include <LiquidCrystal.h>
-LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
+//LiquidCrystal myLCD(2, 3, 4, 5, 6, 7); // Depends on your actual connections
+LiquidCrystal myLCD(8, 9, 4, 5, 6, 7); // Depends on your actual connections
 //LiquidCrystal myLCD(4, 5, 6, 7, 8, 9); // Sample connections starting at pin 4
 #else
 #define LCD_I2C_ADDRESS 0x27    // Default LCD address is 0x27 for a 20 chars and 4 line / 2004 display
 LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS and LCD_ROWS are set by LCDBigNumbers.hpp depending on the defined display
 #endif
+
+LCDBigNumbers BigNumbersLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1); // Font is changed anyway in test
 
 void setup() {
     Serial.begin(115200);
@@ -57,19 +59,23 @@ void setup() {
     myLCD.clear();
     myLCD.backlight(); // Switch backlight LED on
 #endif
+
+    BigNumbersLCD.begin(); // Must be after myLCD.begin() or myLCD.init()
+
     myLCD.print(F("Big numbers demo"));
     myLCD.setCursor(0, 1);
     myLCD.print(__DATE__);
+
     delay(2000);
 
 }
 
 void loop() {
     /*
-     * Show all big number fonts: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS_VARIANT_1,
+     * Show all big number fonts: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS,
      * BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_3,
-     * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1,
+     * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS,
      * BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_2
      */
-    testBigNumbers(&myLCD);
+    testBigNumbers(&BigNumbersLCD);
 }

@@ -1,6 +1,6 @@
 {
   "name": "LCDBigNumbers",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "keywords": "LCD, numbers, 1602, 2004",
   "description": "Arduino library to write big numbers on a 1602 or 2004 LCD.",
   "homepage": "https://github.com/ArminJo/LCDBigNumbers",

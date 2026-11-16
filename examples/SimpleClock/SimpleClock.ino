@@ -1,5 +1,5 @@
 /*
- *  SimpleClock.cpp
+ *  SimpleClock.ino
  *
  *  Shows a (fast) running clock with big numbers on a 2004 LCD.
  * https://wokwi.com/projects/346661429974139474
@@ -19,7 +19,7 @@
  *  See the GNU General Public License for more details.
 
  *  You should have received a copy of the GNU General Public License
- *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
+ *  along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  *
  */
 
@@ -43,12 +43,12 @@ LiquidCrystal_I2C myLCD(LCD_I2C_ADDRESS, LCD_COLUMNS, LCD_ROWS); // LCD_COLUMNS 
 #endif
 
 /*
- * Available big number fonts are: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS_VARIANT_1,
+ * Available big number fonts are: BIG_NUMBERS_FONT_1_COLUMN_2_ROWS, BIG_NUMBERS_FONT_2_COLUMN_2_ROWS,
  * BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_2_ROWS_VARIANT_3,
- * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1,
+ * BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_1, BIG_NUMBERS_FONT_2_COLUMN_3_ROWS_VARIANT_2, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS,
  * BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_1, BIG_NUMBERS_FONT_3_COLUMN_4_ROWS_VARIANT_2
  */
-LCDBigNumbers ThreeLineNumbersLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1); // Use 3x3 numbers
+LCDBigNumbers ThreeLineNumbersLCD(&myLCD, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS); // Use 3x3 numbers
 
 void setup() {
     Serial.begin(115200);
@@ -62,7 +62,8 @@ void setup() {
     myLCD.clear();
     myLCD.backlight(); // Switch backlight LED on
 #endif
-    ThreeLineNumbersLCD.begin(); // Creates custom character used for generating big numbers
+    ThreeLineNumbersLCD.begin(); // Must be after myLCD.begin() or myLCD.init()
+
     myLCD.setCursor(0, 0);
     myLCD.print(F("Clock demo"));
     myLCD.setCursor(0, 1);

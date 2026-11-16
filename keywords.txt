@@ -10,7 +10,7 @@ LCDBigNumbers	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-init	KEYWORD2
+loadFont	KEYWORD2
 begin	KEYWORD2
 setBigNumberCursor	KEYWORD2
 write	KEYWORD2
@@ -18,10 +18,9 @@ writeAt	KEYWORD2
 writeBigNumber	KEYWORD2
 # static functions
 testBigNumbers	KEYWORD2
-printSpaces	KEYWORD2
-clearLine	KEYWORD2
-showSpecialCharacters	KEYWORD2
-showCustomCharacters	KEYWORD2
+enableGapBetweenNumbers	KEYWORD2
+disableGapBetweenNumbers	KEYWORD2
+setGapBetweenNumbers	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
